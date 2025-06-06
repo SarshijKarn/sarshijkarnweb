@@ -369,13 +369,13 @@
   <h2>Let's Connect 😊</h2>
   <p>Drop down your queries!</p>
   <div class="contact-container">
-    <form id="contactForm">
+    <form id="contactForm" novalidate>
 
-      <!-- Honeypot (invisible field to catch bots) -->
-      <input type="text" name="_gotcha" style="display:none" />
+      <!-- Honeypot to catch bots -->
+      <input type="text" name="_gotcha" style="display: none" />
 
-      <!-- IP Address -->
-      <input type="hidden" name="ipAddress" id="ipAddress" />
+      <!-- Hidden IP Address Field -->
+      <input type="hidden" name="ip" id="ipAddress" />
 
       <div class="input-group">
         <label for="name">Name:</label>
@@ -416,7 +416,7 @@
         ></textarea>
       </div>
 
-      <!-- reCAPTCHA -->
+      <!-- Google reCAPTCHA -->
       <div class="g-recaptcha" data-sitekey="6Ldxo1crAAAAAOqJ49P4bLMK4yAZ8muu7ecJfZXX"></div>
 
       <button type="submit">Send Message</button>
@@ -424,73 +424,77 @@
   </div>
 </section>
 
-<!-- IP Tracking Script -->
+<!-- Fetch IP Address -->
 <script>
   fetch("https://ipapi.co/json/")
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("ipAddress").value = data.ip;
+    })
+    .catch((err) => {
+      console.error("IP fetch failed", err);
     });
 </script>
 
-<!-- Google reCAPTCHA v2 -->
+<!-- Google reCAPTCHA Script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!-- Contact Form Submit Script -->
 <script>
-  const form = document.getElementById("contactForm");
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    // Honeypot check
-    if (form._gotcha.value) {
-      alert("Bot detected!");
-      return;
-    }
+      // Bot check (honeypot)
+      if (form._gotcha.value) {
+        alert("Bot submission blocked.");
+        return;
+      }
 
-    // Check if reCAPTCHA completed
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      alert("Please complete the reCAPTCHA");
-      return;
-    }
+      // reCAPTCHA validation
+      const recaptchaToken = grecaptcha.getResponse();
+      if (!recaptchaToken) {
+        alert("Please complete the reCAPTCHA.");
+        return;
+      }
 
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-      ip: form.ipAddress.value,
-      userAgent: navigator.userAgent,
-      recaptcha: recaptchaResponse, // you can verify on backend if you want
-    };
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        message: form.message.value.trim(),
+        ip: form.ip.value,
+        userAgent: navigator.userAgent,
+        recaptcha: recaptchaToken, // For future backend validation if needed
+      };
 
-    try {
-      const response = await fetch(
-        "https://contact-form-backend-l7n8.onrender.com/contact",
-        {
+      try {
+        const response = await fetch("https://contact-form-backend-l7n8.onrender.com/contact", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message || "Message sent successfully!");
+          form.reset();
+          grecaptcha.reset();
+        } else {
+          alert(result.error || "Failed to send message.");
         }
-      );
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert(result.message);
-        form.reset();
-        grecaptcha.reset();
-      } else {
-        alert(result.error || "Something went wrong");
+      } catch (error) {
+        console.error("Submit error:", error);
+        alert("An error occurred. Please try again later.");
       }
-    } catch (error) {
-      alert("Error sending message. Please try again later.");
-      console.error(error);
-    }
+    });
   });
 </script>
+
 
 
 <!-- Footer -->
