@@ -365,91 +365,133 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-<section id="contact" class="section glass reveal">
-    <h2>Let's Connect 😊</h2>
-    <p>Drop down your queries!</p>
-    <div class="contact-container">
-        <form id="contactForm" action="https://contact-form-backend-l7n8.onrender.com/contact" method="POST">
+  <section id="contact" class="section glass reveal">
+  <h2>Let's Connect 😊</h2>
+  <p>Drop down your queries!</p>
+  <div class="contact-container">
+    <form id="contactForm">
 
-            
-            <!-- Honeypot (invisible field to catch bots) -->
-            <input type="text" name="_gotcha" style="display:none">
+      <!-- Honeypot (invisible field to catch bots) -->
+      <input type="text" name="_gotcha" style="display:none" />
 
-            <!-- IP Address -->
-            <input type="hidden" name="ipAddress" id="ipAddress">
+      <!-- IP Address -->
+      <input type="hidden" name="ipAddress" id="ipAddress" />
 
-            <div class="input-group">
-                <label for="name">Name:</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    placeholder="(To call you something, right?)" 
-                    required 
-                    minlength="2" 
-                    maxlength="50" 
-                    pattern="^[A-Za-z\s]+$"
-                >
-            </div>
+      <div class="input-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="(To call you something, right?)"
+          required
+          minlength="2"
+          maxlength="50"
+          pattern="^[A-Za-z\s]+$"
+        />
+      </div>
 
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="(To answer your queries!)" 
-                    required
-                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$"
-                >
-            </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="(To answer your queries!)"
+          required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$"
+        />
+      </div>
 
-            <div class="input-group">
-                <label for="message">Message:</label>
-                <textarea 
-                    id="message" 
-                    name="message" 
-                    rows="5" 
-                    placeholder="(Start Typing, Sir)" 
-                    required
-                    minlength="10"
-                    maxlength="1000"
-                ></textarea>
-            </div>
+      <div class="input-group">
+        <label for="message">Message:</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="(Start Typing, Sir)"
+          required
+          minlength="10"
+          maxlength="1000"
+        ></textarea>
+      </div>
 
-            <!-- reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="6Ldxo1crAAAAAOqJ49P4bLMK4yAZ8muu7ecJfZXX"></div>
+      <!-- reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6Ldxo1crAAAAAOqJ49P4bLMK4yAZ8muu7ecJfZXX"></div>
 
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 </section>
 
 <!-- IP Tracking Script -->
 <script>
-fetch("https://ipapi.co/json/")
-  .then((response) => response.json())
-  .then((data) => {
-    document.getElementById("ipAddress").value = data.ip;
-  });
+  fetch("https://ipapi.co/json/")
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("ipAddress").value = data.ip;
+    });
 </script>
 
 <!-- Google reCAPTCHA v2 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<script>
+  const form = document.getElementById("contactForm");
 
-    
-    <script src="script.js">
-        document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("#contact form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    form.addEventListener("submit", function (event) {
-        alert("Your message has been sent successfully!");
-    });
-});
+    // Honeypot check
+    if (form._gotcha.value) {
+      alert("Bot detected!");
+      return;
+    }
 
-    </script>
+    // Check if reCAPTCHA completed
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+      ip: form.ipAddress.value,
+      userAgent: navigator.userAgent,
+      recaptcha: recaptchaResponse, // you can verify on backend if you want
+    };
+
+    try {
+      const response = await fetch(
+        "https://contact-form-backend-l7n8.onrender.com/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        form.reset();
+        grecaptcha.reset();
+      } else {
+        alert(result.error || "Something went wrong");
+      }
+    } catch (error) {
+      alert("Error sending message. Please try again later.");
+      console.error(error);
+    }
+  });
+</script>
+
 
 <!-- Footer -->
   <footer id="copyright" class="glass">
