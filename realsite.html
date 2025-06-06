@@ -366,31 +366,79 @@
     </section>
 
     <!-- Contact Section -->
-  <section id="contact" class="section glass reveal">
-        <h2>Let's Connect😊</h2>
-        <p>Drop down your queries!</p>
-        <div class="contact-container">
-            <form action="https://formspree.io/f/mnnpappe" method="POST">
-                <div class="input-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="(To call you something, right?)" required>
-                </div>
-    
-                <div class="input-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="(To answer your queries!)" required>
-                </div>
-    
-                <div class="input-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" placeholder="(Start Typing, Sir)" required></textarea>
-                </div>
-    
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-    </section>
+<section id="contact" class="section glass reveal">
+    <h2>Let's Connect 😊</h2>
+    <p>Drop down your queries!</p>
+    <div class="contact-container">
+        <form id="contactForm" action="https://formspree.io/f/mnnpappe" method="POST">
+            
+            <!-- Honeypot (invisible field to catch bots) -->
+            <input type="text" name="_gotcha" style="display:none">
 
+            <!-- IP Address -->
+            <input type="hidden" name="ipAddress" id="ipAddress">
+
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="(To call you something, right?)" 
+                    required 
+                    minlength="2" 
+                    maxlength="50" 
+                    pattern="^[A-Za-z\s]+$"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="(To answer your queries!)" 
+                    required
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="message">Message:</label>
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    rows="5" 
+                    placeholder="(Start Typing, Sir)" 
+                    required
+                    minlength="10"
+                    maxlength="1000"
+                ></textarea>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6Ldxo1crAAAAAOqJ49P4bLMK4yAZ8muu7ecJfZXX"></div>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- IP Tracking Script -->
+<script>
+fetch("https://ipapi.co/json/")
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("ipAddress").value = data.ip;
+  });
+</script>
+
+<!-- Google reCAPTCHA v2 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+    
     <script src="script.js">
         document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("#contact form");
