@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sarshij Karn</title>
   <link rel="canonical" href="https://sarshijkarn.com.np/realsite.html" />
-  
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#ffffff">
@@ -107,9 +108,67 @@
       50% { opacity: 0.4; }
     }
   </style>
+
+  <style>
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .flicker {
+    animation: flicker 1.5s infinite;
+  }
+</style>
+
+  <style>
+  @keyframes neon-glow {
+    0%, 100% { box-shadow: 0 0 8px #00eaff, 0 0 16px #00eaff88; }
+    50% { box-shadow: 0 0 16px #00eaff, 0 0 32px #00eaffcc; }
+  }
+
+  .neon-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00eaff88;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #00eaff;
+    animation: neon-glow 2s infinite, bounce 1s infinite;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .neon-button:hover {
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+</style>
+
+
 </head>
 <body>
 
+<!-- Fullscreen Background Video -->
+<video
+  class="fixed top-0 left-0 w-full h-full object-cover -z-10"
+  autoplay
+  muted
+  loop
+  playsinline
+>
+  <source src="assets/videos/background.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+  
 <div id="loading-screen">
   <div class="background"></div>
 
@@ -139,7 +198,6 @@ const lines = [
   "[SYSTEM] Initializing theme engine ...\n",
   "[ENGINE] Powering up modules...\n",
   "[NETWORK] Establishing secure connection...\n",
-  "[STATUS] System check complete...\n",
   "[BOOT] Launching Sarshij Karn environment →"
 ];
 
@@ -180,8 +238,9 @@ const lines = [
   function speakWelcome() {
     if ('speechSynthesis' in window) {
       const utter = new SpeechSynthesisUtterance("Welcome to the system.");
-      utter.pitch = 1;
-      utter.rate = 0.9;
+      utter.pitch = 1.2;
+      utter.rate = 0.85;
+      utter.voice = speechSynthesis.getVoices().find(v => v.name.includes("Google UK English Male"));
       utter.volume = 1;
       speechSynthesis.speak(utter);
     }
@@ -190,7 +249,10 @@ const lines = [
   // Wait for user interaction before starting (browser autoplay policy)
   window.onload = () => {
     const loaderText = document.querySelector('.loading-text');
-    loaderText.textContent = "👉Click anywhere to begin...👈";
+loaderText.innerHTML = `<div class="neon-button">👉 Click anywhere to begin... 👈</div>`;
+
+
+
     
     document.body.addEventListener('click', () => {
       loaderText.textContent = "Initializing environment...";
