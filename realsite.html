@@ -584,16 +584,20 @@ const words = text.split(" ");
 const tagline = document.getElementById('tagline');
 let index = 0;
 let isDeleting = false;
+const colors = ["#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#ffff00"];
 
 function typeLoop() {
     if (!isDeleting && index < words.length) {
-        tagline.textContent += (index > 0 ? " " : "") + words[index];
+        tagline.innerHTML += (index > 0 ? " " : "") + 
+            `<span style="color: ${colors[index % colors.length]}">${words[index]}</span>`;
         index++;
         setTimeout(typeLoop, 400);
     } 
     else if (isDeleting && index >= 0) {
         const currentWords = words.slice(0, index).join(" ");
-        tagline.textContent = currentWords;
+        tagline.innerHTML = currentWords.split(" ").map((word, i) => 
+            `<span style="color: ${colors[i % colors.length]}">${word}</span>`
+        ).join(" ");
         index--;
         setTimeout(typeLoop, 200);
     } 
