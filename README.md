@@ -20,9 +20,7 @@ The website is organized into several key sections:
 A key feature of this website is the extensive collection of academic notes and resources. These are primarily targeted towards engineering students and include materials for:
 
 *   Electronics, Communication and Information Engineering (BEI)
-*   Civil Engineering (BCE)
-*   Computer Engineering (BCT)
-*   Electrical Engineering (BEL)
+
 
 The resources are further organized by semester, providing easy access to relevant study materials. These materials are hosted on Google Drive and linked directly from the website.
 
