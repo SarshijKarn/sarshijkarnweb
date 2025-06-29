@@ -961,7 +961,7 @@ body::before {
 #animated-lines {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: #8bef11;
+  background: #113aef;           /*changed*/
   border-radius: 8px;
   text-align: center;
   width: fit-content; /* Ensures the box wraps the text only */
