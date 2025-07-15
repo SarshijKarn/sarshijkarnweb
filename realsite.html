@@ -489,5 +489,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sendBtn = document.getElementById("sendBtn");
+    sendBtn.disabled = true;
+    sendBtn.innerText = "⏳ Waking Server...";
+
+    // PING the server as soon as the page loads
+   fetch("https://contact-form-backend-l7n8.onrender.com/ping")
+      .then(res => {
+        if (res.ok) {
+          sendBtn.disabled = false;
+          sendBtn.innerText = "Send Message";
+          console.log("✅ Server is awake.");
+        } else {
+          throw new Error("Ping failed");
+        }
+      })
+      .catch(err => {
+        console.error("❌ Server not reachable yet", err);
+        sendBtn.innerText = "Server Offline /Waking it up.";
+      });
+  });
+</script>
 </body>
 </html>
