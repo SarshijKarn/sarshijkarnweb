@@ -48,16 +48,27 @@
 </head>
     
 <body>
+  <div style="
+  min-height: 100dvh;
+  width: 100%;
+  background: rgba(0, 80, 130, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+">
   <div id="particles-js"></div>
-
-<div id="trail-container"></div>
+  <div id="trail-container"></div>
 
   <!-- Left Decorative Wave -->
-<div class="side-wave left-wave">
+  <div class="side-wave left-wave">
   <svg width="80" height="100%" viewBox="0 0 80 800" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M80 0 Q40 200 80 400 Q120 600 80 800 L0 800 L0 0 Z" fill="#00c6ff22"/>
   </svg>
-</div>
+  </div>
 
 <!-- Right Decorative Wave -->
 <div class="side-wave right-wave">
@@ -739,6 +750,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Prevent background scrolling
   document.body.style.overflow = 'hidden';
 </script>
-
+</div>
 </body>
 </html>
