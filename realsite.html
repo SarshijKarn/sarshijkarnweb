@@ -321,8 +321,8 @@
   });
 </script>
 
- <!--Honourable Mentions Section -->
- <section id="honourable-mentions" style="
+ <!-- Honourable Mentions Section -->
+<section id="honourable-mentions" style="
   backdrop-filter: blur(12px);
   background: rgba(0, 80, 130, 0.2);
   padding: 30px 20px;
@@ -358,7 +358,8 @@
     gap: 20px;
     margin: auto;
   ">
-    <!-- Sample Logo Circles -->
+
+    <!-- ChatGPT -->
     <div style="
       background: rgba(255, 255, 255, 0.08);
       border-radius: 50%;
@@ -372,12 +373,13 @@
       box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
     " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00ffe1';"
        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.4)';">
-      <img src="assets/img/chatgpt.png" alt="ChatGPT" style="width: 36px; height: auto;">
+      <img src="assets/img/chatgpt.png" alt="ChatGPT" style="width: 36px; height: 36px; border-radius: 50%;">
     </div>
 
+    <!-- Google -->
     <div style="
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
+      border-radius: 12px;
       width: 70px;
       height: 70px;
       display: flex;
@@ -388,12 +390,13 @@
       box-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
     " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #ffcc00';"
        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(255, 204, 0, 0.4)';">
-      <img src="assets/img/google.png" alt="Google" style="width: 36px; height: auto;">
+      <img src="assets/img/google.png" alt="Google" style="max-width: 36px; max-height: 36px;">
     </div>
 
+    <!-- Perplexity -->
     <div style="
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
+      border-radius: 10px;
       width: 70px;
       height: 70px;
       display: flex;
@@ -404,12 +407,47 @@
       box-shadow: 0 0 8px rgba(0, 191, 255, 0.4);
     " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00bfff';"
        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 191, 255, 0.4)';">
-      <img src="assets/img/perplexity.png" alt="Perplexity" style="width: 36px; height: auto;">
+      <img src="assets/img/perplexity.png" alt="Perplexity" style="max-width: 36px; max-height: 36px;">
     </div>
 
+    <!-- Cloudflare -->
     <div style="
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
+      border-radius: 8px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #ff8c00';"
+       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(255, 140, 0, 0.4)';">
+      <img src="assets/img/cloudflare.png" alt="Cloudflare" style="max-width: 36px; max-height: 36px;">
+    </div>
+
+    <!-- GitHub -->
+    <div style="
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #ffffff';"
+       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(255, 255, 255, 0.4)';">
+      <img src="assets/img/github.jpg" alt="GitHub" style="max-width: 36px; max-height: 36px;">
+    </div>
+
+    <!-- Render -->
+    <div style="
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
       width: 70px;
       height: 70px;
       display: flex;
@@ -420,12 +458,13 @@
       box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
     " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00ffe1';"
        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.4)';">
-      <img src="assets/img/cloudflare.png" alt="Cloudflare" style="width: 36px; height: auto;">
+      <img src="assets/img/render.png" alt="Render" style="max-width: 36px; max-height: 36px;">
     </div>
 
+    <!-- Mercantile -->
     <div style="
       background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
+      border-radius: 10px;
       width: 70px;
       height: 70px;
       display: flex;
@@ -433,42 +472,10 @@
       justify-content: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       backdrop-filter: blur(4px);
-      box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00ffe1';"
-       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.4)';">
-      <img src="assets/img/github.jpg" alt="Github" style="width: 36px; height: auto;">
-    </div>
-
-    <div style="
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00ffe1';"
-       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.4)';">
-      <img src="assets/img/render.png" alt="Render" style="width: 36px; height: auto;">
-    </div>
-
-    <div style="
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #00ffe1';"
-       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.4)';">
-      <img src="assets/img/mercantile.jpg" alt="Mercantile" style="width: 36px; height: auto;">
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    " onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 12px #ffffff';"
+       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 8px rgba(255, 255, 255, 0.4)';">
+      <img src="assets/img/mercantile.jpg" alt="Mercantile" style="max-width: 36px; max-height: 36px;">
     </div>
 
   </div>
