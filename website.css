@@ -56,61 +56,51 @@ button:hover, .card:hover {
 }
 
 
-/* === Contact Form Styles === */
-#contact form {
-  max-width: 420px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* Contact Section */
+#contact {
+    background: linear-gradient(135deg, #0073e6,);
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-/* Input Groups */
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    max-width: 400px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+/* Input Group */
 .input-group {
-  margin-bottom: 15px;
-  text-align: left;
+    margin-bottom: 15px;
+    text-align: left;
 }
+
 .input-group label {
-  font-size: 1rem;
-  font-weight: bold;
+    font-size: 1rem;
+    font-weight: bold;
 }
+
 .input-group input,
 .input-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  color: #333;
-  outline: none;
-}
-.input-group input:focus,
-.input-group textarea:focus {
-  border: 2px solid #0073e6;
-}
-
-/* Submit Button */
-button[type="submit"] {
-  background: linear-gradient(90deg, #0073e6, #00c6ff);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-
-button[type="submit"]:hover {
-  background: #005bb5;
-  transform: scale(1.04);
-}
-
-/* Status Message */
-#form-status {
-  margin-top: 10px;
-  font-size: 1rem;
-  min-height: 24px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
 }
 
 
@@ -281,6 +271,36 @@ img { display: block; max-width: 100%; height: auto; }
 .card h3, .hobby-card h4 { color: #0073e6; margin-bottom: 10px; }
 .card .highlight { color: #ff6b6b; }
 .tilt { transition: transform 0.2s; }
+
+
+/* === Contact Form === */
+#contact form {
+  max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;
+}
+.input-group { display: flex; flex-direction: column; }
+.input-group input, .input-group textarea {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #0073e633;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  transition: border 0.2s;
+  background: rgba(255,255,255,0.7);
+}
+.input-group input:focus, .input-group textarea:focus { border-color: #0073e6; outline: none; }
+button[type="submit"] {
+  background: linear-gradient(90deg, #0073e6, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
+#form-status { margin-top: 10px; font-size: 1rem; min-height: 24px; }
 
 
 /* === Footer === FIX */
