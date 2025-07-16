@@ -398,29 +398,6 @@ button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
 }
 
 
-/* === Animations === */
-@keyframes float {
-  0% { transform: translateY(0) rotate(-2deg);}
-  100% { transform: translateY(-12px) rotate(2deg);}
-}
-@keyframes floatY {
-  0% { transform: translateY(0) scale(1);}
-  100% { transform: translateY(-18px) scale(1.03);}
-}
-@keyframes wave {
-  0% { transform: rotate(0deg);}
-  15% { transform: rotate(18deg);}
-  30% { transform: rotate(-10deg);}
-  45% { transform: rotate(18deg);}
-  60% { transform: rotate(0deg);}
-  100% { transform: rotate(0deg);}
-}
-@keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-40px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-
 /* === Responsive === */
 @media (max-width: 900px) {
   .section { padding: 36px 3vw; }
