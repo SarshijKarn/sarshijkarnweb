@@ -1,4 +1,4 @@
-/* Section Styles */
+/* Section Styles FIX */   
 .section {
     padding: 40px;
     text-align: center;
@@ -7,8 +7,7 @@
     animation: fadeIn 1.5s forwards;
 }
 
-
-/* Qualifications Section */
+/* Qualifications Section FIX */
 #qualifications .card-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,7 +45,7 @@
 }
 
 
-/* Hover Effects */
+/* Hover Effects FIX */
 button, .card {
     cursor: pointer;
     transition: all 0.3s ease;
@@ -56,136 +55,66 @@ button:hover, .card:hover {
     transform: scale(1.05);
 }
 
-/* Floating Labels Animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+/* === Contact Form Styles === */
+#contact form {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes cardZoomIn {
-    0% {
-        transform: scale(0.9);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes moveUp {
-    0% {
-        transform: translateY(30px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-/* Hover effect for changing color */
-.social-icon:hover {
-  color: #0073e6; /* Change to your preferred hover color */
-  transform: scale(1.1); /* Slightly enlarge the icon on hover */
-}
-
-/* Optional: Styling for a specific icon (e.g., Facebook) */
-.social-icon.fa-facebook-square:hover {
-  color: #3b5998; /* Facebook blue */
-}
-
-.social-icon.fa-twitter-square:hover {
-  color: #1DA1F2; /* Twitter blue */
-}
-
-.social-icon.fa-instagram-square:hover {
-  color: #E4405F; /* Instagram pink */
-}
-
-.social-icon.fa-github-square:hover {
-  color: #333; /* GitHub's dark theme */
-}
-
-.social-icon.fa-youtube-square:hover {
-  color: #FF0000; /* YouTube red */
-}
-
-
-/* Contact Section */
-#contact {
-    background: linear-gradient(135deg, #0073e6,);
-    text-align: center;
-    padding: 40px 20px;
-    border-radius: 12px;
-    max-width: 500px;
-    margin: 40px auto;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.contact-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-form {
-    max-width: 400px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-}
-
-/* Input Group */
+/* Input Groups */
 .input-group {
-    margin-bottom: 15px;
-    text-align: left;
+  margin-bottom: 15px;
+  text-align: left;
 }
-
 .input-group label {
-    font-size: 1rem;
-    font-weight: bold;
+  font-size: 1rem;
+  font-weight: bold;
 }
-
 .input-group input,
 .input-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #333;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+}
+.input-group input:focus,
+.input-group textarea:focus {
+  border: 2px solid #0073e6;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background: linear-gradient(90deg, #0073e6, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #005bb5;
+  transform: scale(1.04);
+}
+
+/* Status Message */
+#form-status {
+  margin-top: 10px;
+  font-size: 1rem;
+  min-height: 24px;
 }
 
 
-/* === Reset & Base === */
+/* === Reset & Base === Site Font FIX  */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -200,7 +129,7 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 
 
-/* === Navbar === */
+/* === Navbar === FIX  */
 .navbar {
   position: sticky;
   top: 0;
@@ -242,7 +171,7 @@ img { display: block; max-width: 100%; height: auto; }
 #theme-toggle { font-size: 1.2rem; }
 
 
-/* === Hero Section === */
+/* === Hero Section === FIX */
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -300,7 +229,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 
-/* === Sections === */
+/* === Sections === FIX */
 .section {
   margin: 36px auto;
   padding: 42px 5vw 34px 5vw;
@@ -327,7 +256,7 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: 1.1rem;
 }
 
-/* === Cards & 3D Tilt === */
+/* === Cards & 3D Tilt === FIX  */
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -354,42 +283,12 @@ img { display: block; max-width: 100%; height: auto; }
 .tilt { transition: transform 0.2s; }
 
 
-/* === Contact Form === */
-#contact form {
-  max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;
-}
-.input-group { display: flex; flex-direction: column; }
-.input-group input, .input-group textarea {
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1.5px solid #0073e633;
-  font-size: 1.05rem;
-  margin-bottom: 6px;
-  transition: border 0.2s;
-  background: rgba(255,255,255,0.7);
-}
-.input-group input:focus, .input-group textarea:focus { border-color: #0073e6; outline: none; }
-button[type="submit"] {
-  background: linear-gradient(90deg, #0073e6, #00c6ff);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
-#form-status { margin-top: 10px; font-size: 1rem; min-height: 24px; }
-
-
-/* === Footer === */
+/* === Footer === FIX */
 #copyright {
   text-align: center;
   font-size: 1rem;
   color: #fff;
-  background: linear-gradient(90deg, #0073e6, #00c6ff);
+  background: linear-gradient(90deg, #4413e4, #00c6ff);
   padding: 18px 0 12px 0;
   border-radius: 18px 18px 0 0;
   box-shadow: 0 -2px 16px #0073e644;
@@ -397,24 +296,7 @@ button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
   position: relative;
 }
 
-
-/* === Responsive === */
-@media (max-width: 900px) {
-  .section { padding: 36px 3vw; }
-  .hero { flex-direction: column; gap: 20px; padding: 40px 3vw 30px 3vw;}
-  .hero-3d { margin-top: 20px; }
-}
-@media (max-width: 650px) {
-  .navbar { flex-direction: column; gap: 10px; padding: 12px 2vw; }
-  .navbar nav ul { gap: 12px; }
-  .section, .hero { padding: 24px 2vw; }
-  .card-container { grid-template-columns: 1fr; }
-  .hobbies { flex-direction: column; gap: 16px;}
-  .floating-img { width: 140px; height: 140px; }
-}
-
-
-/* === 3D Canvas === */
+/* === 3D Canvas ===FIX */
 #bg-canvas {
   position: fixed;
   top: 0; left: 0;
@@ -424,8 +306,7 @@ button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
   opacity: 0.5;
 }
 
-
-/* === Glassmorphism for Content === */
+/* === Glassmorphism for Content === FIX */
 .glass {
   background: rgba(255,255,255,0.20);
   border-radius: 18px;
@@ -435,15 +316,7 @@ button[type="submit"]:hover { background: #005bb5; transform: scale(1.04); }
   position: relative;
   z-index: 1;
 }
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: -1;
-  background: linear-gradient(120deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 100%);
-  pointer-events: none;
-}
+
 #animated-bg {
   position: fixed;
   top: 0; left: 0;
@@ -457,7 +330,6 @@ body {
   z-index: 0;
 }
 
-
 body::before {
   content: '';
   position: fixed;
@@ -467,7 +339,6 @@ body::before {
   background: linear-gradient(120deg, rgba(255,255,255,0.25) 0%, rgba(0,115,230,0.10) 100%);
   pointer-events: none;
 }
-
 
 #three-cube-bg {
   position: fixed;
@@ -479,7 +350,7 @@ body::before {
 }
 
 
-/* Side Decorative Waves */
+/* Side Decorative Waves FIX */
 .side-wave {
   position: fixed;
   top: 0;
@@ -499,7 +370,7 @@ body::before {
 }
 
 
-/* Animated Lines -->  */
+/* Animated Lines -->  FIX */
 .center-wrapper {
   display: flex;
   justify-content: center;
@@ -507,7 +378,6 @@ body::before {
   width: 100%;
   margin-top: 1rem;
 }
-
 #animated-lines {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -516,7 +386,6 @@ body::before {
   text-align: center;
   width: fit-content; /* Ensures the box wraps the text only */
 }
-
 .animated-line {
   display: inline-block;
   font-size: 1rem;
@@ -539,7 +408,7 @@ body::before {
 }
 
 
-/* Trailing */
+/* Trailing FIX  */
 #trail-container {
     position: fixed;
     top: 0;
@@ -582,7 +451,7 @@ body::before {
 }
 
 
-/* navbar effects */
+/* navbar effects FIX */
 .cool-nav li a {
   position: relative;
   text-decoration: none;
@@ -608,7 +477,7 @@ body::before {
   }
 }
 
-/* Glow pulse animation */
+/* Glow pulse animation navbar FIX */
 @keyframes glowPulse {
   0%, 100% {
     text-shadow:
