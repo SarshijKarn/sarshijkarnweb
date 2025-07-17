@@ -129,6 +129,50 @@
     <div class="hero-3d">
       <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/logo.jpg" alt="3D Tech" class="floating-img"/>
     </div>
+
+      <!-- Download Resume Button -->
+<a href="assets/Sarshij-Karn-Resume-2025.pdf" download class="download-btn">
+  <span>📄 Download Resume</span>
+</a>
+
+<style>
+.download-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #007CF0, #00DFD8);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 223, 216, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-45deg);
+  transition: left 0.4s ease-in-out;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 223, 216, 0.4);
+}
+
+.download-btn:hover::before {
+  left: 200%;
+}
+</style>
   </section>
 
   <!-- animation lines -->
