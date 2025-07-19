@@ -351,6 +351,80 @@
   });
 </script>
 
+<script>
+  let scrollDirection = 1; // 1 for left-to-right, -1 for right-to-left
+  let animationFrame;
+  let isPaused = false;
+  let lastMouseX = null;
+  let lastTouchX = null;
+  const slider = document.getElementById('gallerySlider');
+  let pos = 0;
+
+  // Remove CSS animation for manual control
+  slider.style.animation = 'none';
+
+  function animateGallery() {
+    if (!isPaused) {
+      pos += 0.5 * scrollDirection; // Adjust speed here
+      // Loop the gallery for infinite effect
+      if (pos > slider.scrollWidth / 2) pos = 0;
+      if (pos < 0) pos = slider.scrollWidth / 2;
+      slider.style.transform = `translateX(${-pos}px)`;
+    }
+    animationFrame = requestAnimationFrame(animateGallery);
+  }
+
+  animateGallery();
+
+  // Pause on hover
+  slider.querySelectorAll('img').forEach(img => {
+    img.addEventListener('mouseenter', () => { isPaused = true; });
+    img.addEventListener('mouseleave', () => { isPaused = false; });
+    // Touch support for pause
+    img.addEventListener('touchstart', () => { isPaused = true; });
+    img.addEventListener('touchend', () => { isPaused = false; });
+  });
+
+  // Change direction based on mouse movement over images
+  slider.addEventListener('mousemove', (e) => {
+    if (lastMouseX !== null) {
+      if (e.clientX > lastMouseX) {
+        scrollDirection = -1; // Move right-to-left
+      } else if (e.clientX < lastMouseX) {
+        scrollDirection = 1; // Move left-to-right
+      }
+    }
+    lastMouseX = e.clientX;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    scrollDirection = 1;
+    lastMouseX = null;
+  });
+
+  // Touch: change direction based on swipe over images
+  slider.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      lastTouchX = e.touches[0].clientX;
+    }
+  });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1 && lastTouchX !== null) {
+      let currentX = e.touches[0].clientX;
+      if (currentX > lastTouchX + 2) {
+        scrollDirection = -1; // swipe right, scroll right-to-left
+      } else if (currentX < lastTouchX - 2) {
+        scrollDirection = 1; // swipe left, scroll left-to-right
+      }
+      lastTouchX = currentX;
+    }
+  });
+
+  slider.addEventListener('touchend', () => {
+    lastTouchX = null;
+  });
+</script>
 
     <section id="hobbies" class="section">
         <h2 class = "section-heading">My Hobbies</h2>
