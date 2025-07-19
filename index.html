@@ -247,19 +247,11 @@ const lines = [
     }
   }
 
-  // Wait for user interaction before starting (browser autoplay policy)
-  window.onload = () => {
-    const loaderText = document.querySelector('.loading-text');
-loaderText.innerHTML = `<div class="neon-button">👉 Click anywhere to begin... 👈</div>`;
+  // starting (browser autoplay policy)
+window.onload = () => {
+  setTimeout(typeLine, 300); // short delay to make it smooth
+};
 
-
-
-    
-    document.body.addEventListener('click', () => {
-      loaderText.textContent = "Initializing environment...";
-      typeLine();
-    }, { once: true });
-  };
 </script>
 
 </body>
