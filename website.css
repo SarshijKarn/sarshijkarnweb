@@ -601,3 +601,58 @@ body::before {
   text-align: center;
   padding: 10px 0;
 }
+
+
+/* Video Section BG */
+
+.custom-video-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  gap: 2rem;
+}
+
+.content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.cta {
+  padding: 0.6rem 1.2rem;
+  background: #00adb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.video-box {
+  width: 280px;
+  height: 500px; /* adjust as needed */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.portrait-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
