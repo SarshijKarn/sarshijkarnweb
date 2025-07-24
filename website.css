@@ -693,9 +693,6 @@ body::before {
   object-fit: cover;
   border-radius: 16px;
 }
-
-
-
 /** QUALIFICATIONS AND HOBBIES **/
 
 /* Keyframes for Highlight Animation */
@@ -740,3 +737,4 @@ body::before {
   box-shadow: 0 0 32px rgba(0, 255, 255, 0.22), 0 0 8px rgba(57, 255, 20, 0.2);
   border-color: rgba(255, 255, 255, 0.4);
 }
+  
