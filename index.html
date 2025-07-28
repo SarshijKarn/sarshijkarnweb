@@ -55,139 +55,26 @@
       border-bottom: 1px solid #0ff;
       text-align: center;
     }
-    .code-box {
-      background: #050e15;
-      padding: 15px;
-      border-radius: 0 0 8px 8px;
-      height: 120px;
-      overflow: hidden;
-      white-space: pre-wrap;
-    }
-    .status-bar {
-      margin-top: 8px;
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      color: #fff;
-    }
-    .dot {
-      height: 10px;
-      width: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      background-color: #0f0;
-      margin-right: 6px;
-    }
-    .loading-spinner {
-      border: 6px solid #00eaff22;
-      border-top: 6px solid #00eaff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
-    .loading-text {
-      text-align: center;
-      font-weight: bold;
-      color: #00eaff;
-      margin-top: 12px;
-      animation: blink 1.5s infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-  </style>
-
-  <style>
-  @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
-  .flicker {
-    animation: flicker 1.5s infinite;
-  }
 </style>
 </head>
 
 <body> 
-<div id="loading-screen">
+  <!-- Footer -->
+  <footer id="copyright" class="glass">
+    &copy; Original content to be uploaded soon!!!!
+  </footer>
   <div class="background"></div>
   <div class="terminal-window">
-    <div class="window-header">sarshij.initialize()</div>
-    <div class="code-box" id="code-box"></div>
-    <div class="status-bar">
-      <span class="dot online"></span> SYSTEM READY
-      <span class="status-right">100% ⚡ CONNECTED</span>
-    </div>
-  </div>
-  <div class="loading-spinner"></div>
-  <div class="loading-text">Initializing environment...</div>
+    <div class="window-header">COA PRESENTATION </div>
+<!-- Presentation Redirect Button -->
+<div style="text-align: center; margin: 40px 0;">
+  <button onclick="window.location.href='https://software-performance-iss-0ckj5jg.gamma.site/'"
+          style="padding: 15px 30px; font-size: 18px; border: none; border-radius: 8px;
+                 background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white;
+                 cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: 0.3s;">
+    📊 View My Presentation
+  </button>
 </div>
-
-<!-- Typing Sound -->
-<audio id="typing-sound" preload="auto">
-  <source src="/assets/typing.wav" type="audio/wav" />
-</audio>
-
-<script>
-  const codeBox = document.getElementById('code-box');
-  const typingSound = document.getElementById('typing-sound');
-const lines = [
-  "[SYSTEM] Initializing theme engine ...\n",
-  "[ENGINE] Powering up modules...\n",
-  "[NETWORK] Establishing secure connection...\n",
-  "[BOOT] Launching Sarshij Karn environment →"
-];
-  let currentLine = 0;
-  let currentChar = 0;
-  function typeLine() {
-    if (currentLine < lines.length) {
-      const line = lines[currentLine];
-      const typed = line.slice(0, currentChar + 1);
-      if (currentChar === 0) {
-        codeBox.innerHTML += "<span class='line'></span>";
-      }
-      const linesEl = codeBox.querySelectorAll(".line");
-      linesEl[linesEl.length - 1].innerText = typed + "_";
-      // play typing sound
-      typingSound.currentTime = 0;
-      typingSound.play();
-
-      currentChar++;
-      if (currentChar < line.length) {
-        setTimeout(typeLine, 5);
-      } else {
-        currentChar = 0;
-        currentLine++;
-        setTimeout(typeLine, 10);
-      }
-    } else {
-      speakWelcome();
-      setTimeout(() => {
-        window.location.href = "realsite.html";
-      }, 50); // Delay to allow welcome voice
-    }
-  }
-  function speakWelcome() {
-    if ('speechSynthesis' in window) {
-      const utter = new SpeechSynthesisUtterance("Welcome to the system.");
-      utter.pitch = 1.2;
-      utter.rate = 0.85;
-      utter.voice = speechSynthesis.getVoices().find(v => v.name.includes("Google UK English Male"));
-      utter.volume = 1;
-      speechSynthesis.speak(utter);
-    }
-  }
-  // starting (browser autoplay policy)
-window.onload = () => {
-  setTimeout(typeLine, 300); // short delay to make it smooth
-};
 </script>
 </body>
 </html>
