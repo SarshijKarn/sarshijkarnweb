@@ -190,30 +190,6 @@
             );
         });
 
-        // Gallery lightbox functionality
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            lightboxImage.src = imageSrc;
-            lightbox.classList.add('active');
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-        }
-
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your backend
-            // For now, we'll just show a success message
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            contactForm.reset();
-        });
-
         // Navbar scroll effect - optimized with throttling
         let scrollTimeout;
         window.addEventListener('scroll', () => {
@@ -304,7 +280,7 @@
             const heroName = document.getElementById('hero-name');
             if (!heroName) return;
             const originalText = heroName.textContent;
-            const chars = "!<>-_\\/[\]{}—=+*^?#________";
+            const chars = "!<>-_\\/[\]{}—=+*^?#";
             let animating = false;
 
             function triggerJumble() {
@@ -328,52 +304,3 @@
             heroName.addEventListener('mouseenter', triggerJumble);
             heroName.addEventListener('touchstart', triggerJumble, {passive: true});
         })();
-
-// Gallery slider seamless loop auto-move - optimized for performance
-(function gallerySlider() {
-    const track = document.getElementById('gallery-track');
-    const slider = document.getElementById('gallery-slider');
-    if (!track || !slider) return;
-    
-    let items = Array.from(track.children);
-    let isPaused = false;
-    let offset = 0;
-    const scrollSpeed = 0.5; // Reduced speed for better performance
-
-    // Duplicate gallery items to ensure seamless infinite scroll
-    const initialTrackWidth = track.scrollWidth;
-    while (track.scrollWidth < slider.offsetWidth * 2 || track.scrollWidth < initialTrackWidth * 2) {
-        items.forEach(item => {
-            const clone = item.cloneNode(true);
-            track.appendChild(clone);
-        });
-    }
-    // Update items list after cloning
-    items = Array.from(track.children);
-
-    function animate() {
-        if (!isPaused) {
-            offset -= scrollSpeed;
-            const singleLoopWidth = initialTrackWidth;
-            if (Math.abs(offset) >= singleLoopWidth) {
-                offset += singleLoopWidth; // Reset offset to allow seamless loop
-            }
-            track.style.transform = `translateX(${offset}px)`;
-        }
-        requestAnimationFrame(animate);
-    }
-    
-    function pauseScroll() { isPaused = true; }
-    function resumeScroll() { isPaused = false; }
-    
-    // Add event listeners to all items (original and cloned)
-    items.forEach(item => {
-        item.addEventListener('mouseenter', pauseScroll);
-        item.addEventListener('mouseleave', resumeScroll);
-        item.addEventListener('touchstart', pauseScroll, {passive: true});
-        item.addEventListener('touchend', resumeScroll);
-    });
-    
-    animate();
-})();
-
