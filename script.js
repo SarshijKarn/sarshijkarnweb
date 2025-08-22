@@ -65,8 +65,8 @@
             });
         }
 
-        // Create particles periodically
-        setInterval(createParticle, 300);
+        // Create particles periodically - reduced frequency for better performance
+        setInterval(createParticle, 800);
 
         // Typing effect for hero tagline
         const typingText = document.querySelector('.typing-text');
@@ -86,76 +86,105 @@
             setTimeout(typeWriter, 1000);
         }
 
-        // GSAP Scroll Animations
-        gsap.from('.hero-title', {
+        // GSAP Scroll Animations - optimized for performance
+        gsap.from('.hero-photo-wrapper', {
             duration: 1.5,
-            y: 100,
+            scale: 0,
+            rotation: 360,
             opacity: 0,
-            ease: 'power3.out'
+            ease: 'back.out(1.7)'
+        });
+
+        gsap.from('.hero-title', {
+            duration: 1.2,
+            y: 80,
+            opacity: 0,
+            ease: 'power2.out',
+            delay: 0.3
         });
 
         gsap.from('.typing-text', {
-            duration: 1,
-            y: 50,
+            duration: 0.8,
+            y: 40,
             opacity: 0,
-            delay: 0.5,
+            delay: 0.3,
             ease: 'power2.out'
         });
 
         gsap.from('.social-icon', {
-            duration: 0.8,
-            y: 30,
+            duration: 0.6,
+            y: 20,
             opacity: 0,
-            stagger: 0.1,
-            delay: 1,
-            ease: 'back.out(1.7)'
+            stagger: 0.08,
+            delay: 0.8,
+            ease: 'power2.out'
         });
 
-        // Scroll-triggered animations
+        // Scroll-triggered animations - optimized for performance
         gsap.utils.toArray('.card').forEach(card => {
             gsap.fromTo(card, 
-                { y: 50, opacity: 0 },
+                { y: 30, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: card,
-                        start: 'top 80%'
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
                     }
                 }
             );
         });
 
-        // Timeline animation
+        // About photo animation
+        gsap.fromTo('.about-photo-wrapper',
+            { scale: 0, rotation: -180, opacity: 0 },
+            {
+                scale: 1,
+                rotation: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: '.about-photo-wrapper',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            }
+        );
+
+        // Timeline animation - optimized for performance
         gsap.utils.toArray('.timeline-item').forEach((item, index) => {
             gsap.fromTo(item,
-                { x: index % 2 === 0 ? -100 : 100, opacity: 0 },
+                { x: index % 2 === 0 ? -60 : 60, opacity: 0 },
                 {
                     x: 0,
                     opacity: 1,
-                    duration: 1,
+                    duration: 0.7,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: item,
-                        start: 'top 80%'
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
                     }
                 }
             );
         });
 
-        // Circuit line animations
+        // Circuit line animations - optimized for performance
         gsap.utils.toArray('.circuit-line').forEach(line => {
             gsap.fromTo(line,
                 { scaleX: 0 },
                 {
                     scaleX: 1,
-                    duration: 1.5,
+                    duration: 1,
                     ease: 'power2.inOut',
                     scrollTrigger: {
                         trigger: line,
-                        start: 'top 80%'
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
                     }
                 }
             );
@@ -185,22 +214,28 @@
             contactForm.reset();
         });
 
-        // Navbar scroll effect
+        // Navbar scroll effect - optimized with throttling
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.backdropFilter = 'blur(20px)';
-            } else {
-                navbar.style.backdropFilter = 'blur(10px)';
-            }
+            if (scrollTimeout) return;
+            
+            scrollTimeout = setTimeout(() => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.style.backdropFilter = 'blur(20px)';
+                } else {
+                    navbar.style.backdropFilter = 'blur(10px)';
+                }
+                scrollTimeout = null;
+            }, 16); // ~60fps
         });
 
-        // Add hover effects to project cards
+        // Add hover effects to project cards - optimized for performance
         document.querySelectorAll('.card-3d').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 gsap.to(card, {
-                    scale: 1.05,
-                    duration: 0.3,
+                    scale: 1.03,
+                    duration: 0.2,
                     ease: 'power2.out'
                 });
             });
@@ -208,7 +243,7 @@
             card.addEventListener('mouseleave', () => {
                 gsap.to(card, {
                     scale: 1,
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: 'power2.out'
                 });
             });
@@ -216,15 +251,15 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Create initial particles
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createParticle, i * 100);
+            // Create initial particles - reduced count for better performance
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createParticle, i * 200);
             }
 
             // Add loading animation
             gsap.from('body', {
                 opacity: 0,
-                duration: 1,
+                duration: 0.8,
                 ease: 'power2.out'
             });
         });
@@ -264,7 +299,7 @@
         document.querySelectorAll('.card').forEach(card => {
             observer.observe(card);
         });
-    // Name Jumble Effect for SARSHIJ KARN
+    // Name Jumble Effect for SARSHIJ KARN - optimized for performance
         (function() {
             const heroName = document.getElementById('hero-name');
             if (!heroName) return;
@@ -286,32 +321,30 @@
                         heroName.textContent = originalText;
                         animating = false;
                     }
-                    counter += 1 / 4;
-                }, 30);
+                    counter += 1 / 3; // Slightly faster
+                }, 40); // Slightly slower for better performance
             }
 
             heroName.addEventListener('mouseenter', triggerJumble);
             heroName.addEventListener('touchstart', triggerJumble, {passive: true});
         })();
 
-// Gallery slider seamless loop auto-move
+// Gallery slider seamless loop auto-move - optimized for performance
 (function gallerySlider() {
     const track = document.getElementById('gallery-track');
     const slider = document.getElementById('gallery-slider');
+    if (!track || !slider) return;
+    
     let items = Array.from(track.children);
     let isPaused = false;
     let offset = 0;
-    const scrollSpeed = 0.7; // px/frame
+    const scrollSpeed = 0.5; // Reduced speed for better performance
 
     // Duplicate gallery items to ensure seamless infinite scroll
     const initialTrackWidth = track.scrollWidth;
     while (track.scrollWidth < slider.offsetWidth * 2 || track.scrollWidth < initialTrackWidth * 2) {
         items.forEach(item => {
             const clone = item.cloneNode(true);
-            clone.addEventListener('mouseenter', pauseScroll);
-            clone.addEventListener('mouseleave', resumeScroll);
-            clone.addEventListener('touchstart', pauseScroll, {passive: true});
-            clone.addEventListener('touchend', resumeScroll);
             track.appendChild(clone);
         });
     }
@@ -329,13 +362,17 @@
         }
         requestAnimationFrame(animate);
     }
+    
     function pauseScroll() { isPaused = true; }
     function resumeScroll() { isPaused = false; }
+    
+    // Add event listeners to all items (original and cloned)
     items.forEach(item => {
         item.addEventListener('mouseenter', pauseScroll);
         item.addEventListener('mouseleave', resumeScroll);
         item.addEventListener('touchstart', pauseScroll, {passive: true});
         item.addEventListener('touchend', resumeScroll);
     });
+    
     animate();
 })();
