@@ -611,19 +611,48 @@
       } catch (err) {
         console.warn("❌ Server not reachable yet", err);
         sendBtn.innerText = "Server Offline (Fallback ready)";
-        sendBtn.disabled = false; // still allow Formspree fallback
+        sendBtn.disabled = false; // allow fallback anyway
       }
     };
     wakeServer();
+
+    // Simple validation helpers
+    const isValidEmail = (email) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    const validateForm = () => {
+      if (!form.name.value.trim()) {
+        alert("Name is required.");
+        return false;
+      }
+      if (!isValidEmail(form.email.value.trim())) {
+        alert("Valid email is required.");
+        return false;
+      }
+      if (!form.subject.value.trim()) {
+        alert("Subject is required.");
+        return false;
+      }
+      if (form.message.value.trim().length < 10) {
+        alert("Message must be at least 10 characters.");
+        return false;
+      }
+      return true;
+    };
 
     // Handle form submit
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      // Honeypot check
       if (form._gotcha.value) return alert("Bot blocked.");
 
+      // reCAPTCHA check
       const recaptchaToken = grecaptcha.getResponse();
       if (!recaptchaToken) return alert("Please complete the reCAPTCHA.");
+
+      // Validate fields
+      if (!validateForm()) return;
 
       const payload = {
         name: form.name.value.trim(),
@@ -687,6 +716,7 @@
     });
   });
 </script>
+
 
 
 <!-- Footer -->
