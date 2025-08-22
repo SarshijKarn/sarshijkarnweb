@@ -91,6 +91,15 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative">
         <div class="text-center z-10">
+            <!-- Hero Photo -->
+            <div class="hero-photo-container mb-8">
+                <div class="hero-photo-wrapper">
+                    <img src="logo.jpg" alt="Sarshij Karn" class="hero-photo">
+                    <div class="hero-photo-glow"></div>
+                    <div class="hero-photo-border"></div>
+                </div>
+            </div>
+            
             <h1 id="hero-name" class="glitch hero-title glow-special text-6xl md:text-8xl mb-6" data-text="SARSHIJ KARN">SARSHIJ KARN</h1>
             <div class="text-xl md:text-2xl mb-8 neon-cyan">
                 <span class="inline-block typing-text">Future Engineer · Tech Enthusiast · Cybersecurity · AI</span>
@@ -146,6 +155,15 @@
     <section id="about" class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">About Me</span></h2>
+            
+            <!-- About Photo -->
+            <div class="about-photo-container mb-8">
+                <div class="about-photo-wrapper">
+                    <img src="profile.jpg" alt="Sarshij Karn" class="about-photo">
+                    <div class="about-photo-frame"></div>
+                </div>
+            </div>
+            
             <div class="card rounded-xl p-8">
                 <div class="text-lg leading-relaxed">
                     <p class="mb-6">
@@ -733,24 +751,170 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
     const sendBtn = document.getElementById("sendBtn");
-    sendBtn.disabled = true;
-    sendBtn.innerText = "⏳ Waking Server...";
-    // PING the server as soon as the page loads
-   fetch("https://contact-form-backend-l7n8.onrender.com/ping")
-      .then(res => {
-        if (res.ok) {
-          sendBtn.disabled = false;
-          sendBtn.innerText = "Send Message";
-          console.log("✅ Server is awake.");
+
+    // Darken the button a bit (without editing HTML)
+    sendBtn.classList.add("hover:scale-105");
+    // If you're using Tailwind, this works; if not, fallback to direct style:
+    try {
+      sendBtn.classList.add("bg-neutral-900","from-neutral-900","to-neutral-800");
+      sendBtn.classList.remove("from-purple-600","to-cyan-400");
+    } catch (_) {
+      sendBtn.style.background = "#0b0b0b";
+      sendBtn.style.color = "#fff";
+    }
+
+    // Wake backend on page load (single ping)
+    const BACKEND_BASE = "https://contact-form-backend-l7n8.onrender.com";
+    const FORMSPREE_URL = "https://formspree.io/f/mnnpappe"; // your existing ID
+
+    const setBtn = (text, disabled) => {
+      sendBtn.innerText = text;
+      sendBtn.disabled = !!disabled;
+    };
+
+    setBtn("⏳ Waking server...", true);
+    fetch(`${BACKEND_BASE}/ping`)
+      .then(r => {
+        if (r.ok) {
+          setBtn("Send Message", false);
+          console.log("✅ Backend awake");
         } else {
-          throw new Error("Ping failed");
+          throw new Error("Ping non-200");
         }
       })
-      .catch(err => {
-        console.error("❌ Server not reachable yet", err);
-        sendBtn.innerText = "Server Offline /Waking it up.";
+      .catch(() => {
+        // Still allow submit; we’ll fallback to Formspree if backend fails
+        setBtn("Send Message (fallback ready)", false);
+        sendBtn.title = "Backend offline — will use Formspree";
+        console.warn("⚠️ Backend ping failed; fallback prepared");
       });
+
+    // Util: email validation
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // Simple toast (no HTML change)
+    const toast = (msg) => {
+      const el = document.createElement("div");
+      el.textContent = msg;
+      el.style.position = "fixed";
+      el.style.bottom = "20px";
+      el.style.left = "50%";
+      el.style.transform = "translateX(-50%)";
+      el.style.padding = "10px 14px";
+      el.style.background = "rgba(20,20,20,0.95)";
+      el.style.color = "#fff";
+      el.style.borderRadius = "10px";
+      el.style.fontSize = "14px";
+      el.style.zIndex = "9999";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    };
+
+    // Submit handler
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Honeypot (bots will fill _gotcha)
+      if (form._gotcha && form._gotcha.value) {
+        toast("Bot blocked.");
+        return;
+      }
+
+      // reCAPTCHA client check
+      const recaptchaToken = grecaptcha.getResponse();
+      if (!recaptchaToken) {
+        toast("Please complete the reCAPTCHA.");
+        return;
+      }
+
+      // Client validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const subject = form.subject.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name) return toast("Name is required.");
+      if (!isValidEmail(email)) return toast("Enter a valid email.");
+      if (!subject) return toast("Subject is required.");
+      if (message.length < 10) return toast("Message must be at least 10 characters.");
+
+      // Gather meta
+      const userAgent = navigator.userAgent;
+      const referrer = document.referrer || location.origin;
+      const timestamp = new Date().toISOString();
+
+      // We already have hidden IP field populated by your ipapi script
+      const ip = (form.ip && form.ip.value) ? form.ip.value : "";
+
+      const payload = {
+        name, email, subject, message,
+        ip, userAgent, referrer, timestamp,
+        recaptcha: recaptchaToken
+      };
+
+      setBtn("⏳ Sending...", true);
+
+      // 1) Try backend first
+      try {
+        const resp = await fetch(`${BACKEND_BASE}/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await resp.json().catch(() => ({}));
+
+        if (resp.ok) {
+          toast(result.message || "✅ Message sent!");
+          form.reset();
+          grecaptcha.reset();
+          setBtn("Sent ✓", true);
+          setTimeout(() => setBtn("Send Message", false), 1200);
+          return;
+        } else {
+          console.error("Backend error:", result);
+          throw new Error(result?.error || "Backend failed");
+        }
+      } catch (err) {
+        console.warn("Backend failed, falling back to Formspree…", err);
+      }
+
+      // 2) Fallback: Formspree
+      try {
+        const fd = new FormData(form);
+        fd.append("ip", ip);
+        fd.append("userAgent", userAgent);
+        fd.append("referrer", referrer);
+        fd.append("timestamp", timestamp);
+
+        const resp = await fetch(FORMSPREE_URL, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: fd,
+        });
+
+        // Formspree returns 200/OK on success
+        const result = await resp.json().catch(() => ({}));
+        if (resp.ok) {
+          toast("✅ Message sent via Formspree.");
+          form.reset();
+          grecaptcha.reset();
+          setBtn("Sent via Fallback ✓", true);
+          sendBtn.title = "Sent using Formspree fallback";
+          setTimeout(() => setBtn("Send Message (fallback ready)", false), 1500);
+        } else {
+          console.error("Formspree error:", result);
+          toast("❌ Both backend and Formspree failed. Try later.");
+          setBtn("Send Message (fallback ready)", false);
+        }
+      } catch (fsErr) {
+        console.error("Formspree network error:", fsErr);
+        toast("❌ Both backend and Formspree failed. Try later.");
+        setBtn("Send Message (fallback ready)", false);
+      }
+    });
   });
 </script>
 </body>
