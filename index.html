@@ -1,193 +1,697 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sarshij Karn</title>
-  <link rel="canonical" href="https://sarshijkarn.com.np/realsite.html" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarshij Karn</title>
+    <link rel="canonical" href="https://sarshijkarn.com.np/" />
+
+    <meta name="description" content="Welcome to the portfolio of Sarshij Karn — a passionate Electronics, Communication & Information Engineering student. Explore my journey, tech projects, personal interests, and achievements in innovation, trading, and creativity."/>
+    <meta name="keywords" content="Sarshij Karn, Sarshij, sarshij, sarshij karn, Electronics Engineer, Stock Market, Investor, Content Creator, Trader, Nepal, Website, Engineering, portfolio, engineering student, projects, creativity, notes, engineering notes, technology, templates,"/>
+    <meta name="author" content="Sarshij Karn" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="styles.css">
 <!-- Standard favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
 <!-- PNG versions for modern browsers -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+
 <!-- Apple Touch Icon for iOS devices -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
 <!-- Web Manifest for PWA support -->
 <link rel="manifest" href="/site.webmanifest">
 
-  <style>
-    body {
-      margin: 0;
-      background-color: #010c15;
-      color: #00eaff;
-      font-family: 'Courier New', monospace;
-      overflow: hidden;
-    }
-    .background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(#00eaff11 1px, transparent 1px);
-      background-size: 60px 60px;
-      z-index: 0;
-    }
-    .terminal-window {
-      background-color: #08131c;
-      border: 1px solid #0ff;
-      width: 500px;
-      margin: 100px auto 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #00eaff88;
-      padding: 1rem;
-      position: relative;
-      z-index: 2;
-    }
-    .window-header {
-      background-color: #0a1a29;
-      color: #00eaff;
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 8px 8px 0 0;
-      border-bottom: 1px solid #0ff;
-      text-align: center;
-    }
-    .code-box {
-      background: #050e15;
-      padding: 15px;
-      border-radius: 0 0 8px 8px;
-      height: 120px;
-      overflow: hidden;
-      white-space: pre-wrap;
-    }
-    .status-bar {
-      margin-top: 8px;
-      font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      color: #fff;
-    }
-    .dot {
-      height: 10px;
-      width: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      background-color: #0f0;
-      margin-right: 6px;
-    }
-    .loading-spinner {
-      border: 6px solid #00eaff22;
-      border-top: 6px solid #00eaff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
-    .loading-text {
-      text-align: center;
-      font-weight: bold;
-      color: #00eaff;
-      margin-top: 12px;
-      animation: blink 1.5s infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-  </style>
+    <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sarshij Karn",
+      "url": "https://sarshijkarn.com.np",
+      "sameAs": [
+        "https://www.linkedin.com/in/sarshij-karn-1a7766236/",
+        "https://facebook.com/sarshij.karn.3",
+        "https://x.com/sarshijkarn",
+        "https://www.instagram.com/sarshijkarn",
+        "https://github.com/SarshijKarn",
+        "https://youtube.com/@sarshijkarn"
+      ]
+   }
+</script>
 
-  <style>
-  @keyframes flicker {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
-  .flicker {
-    animation: flicker 1.5s infinite;
-  }
-</style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body> 
-<div id="loading-screen">
-  <div class="background"></div>
-  <div class="terminal-window">
-    <div class="window-header">sarshij.initialize()</div>
-    <div class="code-box" id="code-box"></div>
-    <div class="status-bar">
-      <span class="dot online"></span> SYSTEM READY
-      <span class="status-right">100% ⚡ CONNECTED</span>
+<body class="dark">
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold neon-purple font-orbitron glow-special" style="color: #FFD600;">SK</div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link-bg hover:text-purple-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link-bg hover:text-purple-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link-bg hover:text-purple-400 transition-colors">Skills</a>
+                <a href="#projects" class="nav-link-bg hover:text-purple-400 transition-colors">Projects</a>
+                <a href="#qualifications" class="nav-link-bg hover:text-purple-400 transition-colors">Education</a>
+                <a href="#hobbies" class="nav-link-bg hover:text-purple-400 transition-colors">Interests</a>
+                <a href="#contact" class="nav-link-bg hover:text-purple-400 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="theme-toggle" id="themeToggle"></div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-4 text-center">
+                <a href="#home" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Home</a>
+                <a href="#about" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">About</a>
+                <a href="#skills" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Skills</a>
+                <a href="#projects" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Projects</a>
+                <a href="#qualifications" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Education</a>
+                <a href="#hobbies" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Interests</a>
+                <a href="#contact" class="nav-link-bg hover:text-purple-400 transition-colors mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="text-center z-10">
+            <h1 id="hero-name" class="glitch hero-title glow-special text-6xl md:text-8xl mb-6" data-text="SARSHIJ KARN">SARSHIJ KARN</h1>
+            <div class="text-xl md:text-2xl mb-8 neon-cyan">
+                <span class="inline-block typing-text">Future Engineer · Tech Enthusiast · Cybersecurity · AI</span>
+            </div>
+            <!-- Social Links -->
+            <div class="flex justify-center space-x-8 mb-8">
+            <a href="https://github.com/SarshijKarn" target="_blank" aria-label="GitHub"
+                class="text-gray-400 hover:text-purple-400 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/sarshij-karn-1a7766236/" target="_blank" aria-label="LinkedIn"
+                class="text-gray-400 hover:text-blue-400 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://x.com/sarshijkarn" target="_blank" aria-label="X / Twitter"
+                class="text-gray-400 hover:text-blue-400 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <a href="https://www.instagram.com/sarshijkarn" target="_blank" aria-label="Instagram"
+                class="text-gray-400 hover:text-pink-400 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://youtube.com/@sarshijkarn" target="_blank" aria-label="YouTube"
+                class="text-gray-400 hover:text-red-500 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fab fa-youtube"></i>
+            </a>
+
+            <a href="mailto:sarshijkarn333@gmail.com" aria-label="Email"
+                class="text-gray-400 hover:text-green-400 text-3xl transition-all duration-300 transform hover:scale-110 hover:drop-shadow-lg">
+                <i class="fas fa-envelope"></i>
+            </a>
+            </div>
+
+            <!-- Include Font Awesome -->
+            <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+            <a href="#about" class="inline-block bg-gradient-to-r from-purple-600 to-cyan-400 px-8 py-3 rounded-full text-white font-semibold hover:from-purple-700 hover:to-cyan-500 transition-all transform hover:scale-105">
+                Explore My Journey
+            </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl neon-cyan"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">About Me</span></h2>
+            <div class="card rounded-xl p-8">
+                <div class="text-lg leading-relaxed">
+                    <p class="mb-6">
+                        I'm an Electronics, Communication & Information Engineering student exploring the edge where hardware meets intelligence. 
+                        My interests span AI systems, embedded design, cybersecurity basics, and performance-minded software.
+                    </p>
+                    <p class="mb-6">
+                        I'm highly curious about AI, automation, embedded systems, and cybersecurity. Focused on learning, experimenting, 
+                        and creating smart solutions, I'm skilled in leveraging AI tools, programming, and electronics for practical innovation.
+                    </p>
+                    <p>
+                        I constantly work on improving my problem-solving, coding, and analytical skills while staying ahead of the curve 
+                        by actively exploring AI tools and keeping up with emerging tech trends.
+                    </p>
+                </div>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl font-bold neon-purple">4.0</div>
+                        <div class="text-sm">Grade X GPA</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold neon-cyan">3.53</div>
+                        <div class="text-sm">Grade XII GPA</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold neon-purple">2024</div>
+                        <div class="text-sm">Currently Student</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold neon-cyan">Nepal</div>
+                        <div class="text-sm">Located in</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              <!-- Download Resume Button -->
+        <div class="flex justify-center mt-6">
+        <a href="assets/Sarshij-Karn-Resume.pdf" download 
+            class="download-btn inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-400 text-white font-semibold hover:from-purple-700 hover:to-cyan-500 transition-all">
+            <span>📄 Download Resume</span>
+        </a>
+        </div>
+    </section>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Skills & Expertise</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Programming -->
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-code text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Programming</h3>
+                    <div class="text-sm space-y-1">
+                        <div>C, C++, Python</div>
+                        <div>HTML5, CSS3, JavaScript</div>
+                    </div>
+                </div>
+
+                <!-- AI & Machine Learning -->
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-brain text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">AI & ML</h3>
+                    <div class="text-sm space-y-1">
+                        <div>TensorFlow, Keras</div>
+                        <div>OpenCV, MediaPipe</div>
+                        <div>Prompt Engineering</div>
+                    </div>
+                </div>
+
+                <!-- Electronics -->
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-microchip text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Electronics</h3>
+                    <div class="text-sm space-y-1">
+                        <div>Arduino, Embedded Systems</div>
+                        <div>Circuit Simulation</div>
+                        <div>Signals & Systems</div>
+                        <div>PCB Design</div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-shield-alt text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Cybersecurity</h3>
+                    <div class="text-sm space-y-1">
+                        <div>Linux Scripting</div>
+                        <div>Learning Ethical Hacking</div>
+                        <div>Terminal Operations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Skills -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card rounded-xl p-6">
+                    <h4 class="text-lg font-semibold mb-3 neon-purple">Automation Tools & More</h4>
+                    <div class="text-sm">OpenAI API, n8n, Zapier, LM Studio, ComfyUI, Ollama, OPAL</div>
+                </div>
+                <div class="card rounded-xl p-6">
+                    <h4 class="text-lg font-semibold mb-3 neon-cyan">Hosting Platforms</h4>
+                    <div class="text-sm">Netlify, Vercel, Cloudflare, GitHub Pages</div>
+                </div>
+                <div class="card rounded-xl p-6">
+                    <h4 class="text-lg font-semibold mb-3 neon-purple">Languages</h4>
+                    <div class="text-sm">English (Fluent), Nepali (Native), Hindi (Fluent), Maithili (Conversational)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Featured Projects</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="card rounded-xl p-6 card-3d group">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-cyan-400 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-smile text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Emotion Detection Model</h3>
+                    <p class="text-sm mb-4">Python-based machine learning model using OpenCV and deep learning to detect human emotions from real-time facial expressions.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/SarshijKarn" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                        <a href="https://github.com/SarshijKarn/Emotion-Detection-Model" target="_blank" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card rounded-xl p-6 card-3d group">
+                    <div class="h-48 bg-gradient-to-br from-cyan-600 to-purple-400 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-hand-paper text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Gesture Calculator</h3>
+                    <p class="text-sm mb-4">Gesture-controlled calculator that performs arithmetic operations based on hand gestures with speech feedback and real-time overlay interface.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/SarshijKarn" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                        <a href="https://github.com/SarshijKarn/Gesture-Based-Calculator" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card rounded-xl p-6 card-3d group">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-400 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Habibi AI Assistant</h3>
+                    <p class="text-sm mb-4">Offline voice-activated AI assistant capable of answering questions, system stats reporting, web searching, and natural speech dialogue.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/SarshijKarn" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                        <a href="https://github.com/SarshijKarn/Habibi-Assistant" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="card rounded-xl p-6 card-3d group">
+                    <div class="h-48 bg-gradient-to-br from-cyan-600 to-green-400 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-globe text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Portfolio Website</h3>
+                    <p class="text-sm mb-4">Fully responsive portfolio website using HTML5, CSS3, and JavaScript to showcase skills, projects, and achievements with modern design.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/SarshijKarn" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                        <a href="https://sarshijkarn.com.np" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section id="qualifications" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Education & Qualifications</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card rounded-xl p-6 md:ml-8">
+                        <div class="circuit-line" style="top: 50%; width: 100px;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Bachelor's in Electronics, Communication and Information Engineering</h3>
+                        <div class="text-purple-400 mb-2">National College Of Engineering (T.U) • 2024 - Present</div>
+                        <p class="text-sm">Currently pursuing engineering degree with focus on electronics, communication systems, and information technology.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card rounded-xl p-6 md:mr-8 md:ml-auto md:text-right">
+                        <div class="circuit-line" style="top: 50%; width: 100px; right: 0;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Grade XII (NEB)</h3>
+                        <div class="text-cyan-400 mb-2">Liverpool International College • 2022 - 2024</div>
+                        <p class="text-sm mb-2">GPA: 3.53</p>
+                        <p class="text-sm">Completed higher secondary education with merit-based scholarship for outstanding academic performance.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="card rounded-xl p-6 md:ml-8">
+                        <div class="circuit-line" style="top: 50%; width: 100px;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Grade X (NEB)</h3>
+                        <div class="text-purple-400 mb-2">Happyland Secondary School • 2021</div>
+                        <p class="text-sm mb-2">GPA: 4.00 (Perfect Score)</p>
+                        <p class="text-sm">Achieved perfect academic performance in secondary education.</p>
+                    </div>
+                </div>
+
+                <!-- Awards Section -->
+                <div class="timeline-item">
+                    <div class="card rounded-xl p-6 md:mr-8 md:ml-auto md:text-right">
+                        <div class="circuit-line" style="top: 50%; width: 100px; right: 0;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Awards & Recognition</h3>
+                        <div class="text-cyan-400 mb-2">Multiple Achievements</div>
+                        <div class="text-sm space-y-2">
+                            <div>• Merit-Based Scholarship - Liverpool International College</div>
+                            <div>• Full Merit Scholarship - National College Of Engineering</div>
+                            <div>• Certificate of Participation - Multiple Hackathons & Workshops</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies/Interests Section -->
+    <section id="hobbies" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Interests & Hobbies</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-shield-alt text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-lg font-semibold">Cybersecurity</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-laptop-code text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-lg font-semibold">Technology & AI</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-chart-line text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-lg font-semibold">Financial Markets</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-globe text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-lg font-semibold">Web & Tech Exploration</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-running text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-lg font-semibold">Playing Sports</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-book text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-lg font-semibold">Reading Books</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-code text-4xl neon-cyan mb-4"></i>
+                    <h3 class="text-lg font-semibold">Hackathons</h3>
+                </div>
+                <div class="card rounded-xl p-6 text-center card-3d">
+                    <i class="fas fa-brain text-4xl neon-purple mb-4"></i>
+                    <h3 class="text-lg font-semibold">Human Psychology</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Gallery</span></h2>
+<div id="gallery-slider" class="overflow-hidden relative">
+    <div id="gallery-track" class="flex space-x-4 transition-transform duration-300 ease-linear will-change-transform">
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/gallery1.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/gallery1.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/duo.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/duo.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/trio.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/trio.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/ronaldp.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/ronaldp.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/sandy.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/sandy.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/sarshij.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/sarshij.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
+        <div class="card rounded-xl overflow-hidden cursor-pointer gallery-item neon-border" onclick="openLightbox('https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/skeleton.jpg')">
+            <img src="https://raw.githubusercontent.com/SarshijKarn/My-Website/main/assets/img/gallery/skeleton.jpg" alt="Gallery Image" class="gallery-img">
+        </div>
     </div>
-  </div>
-  <div class="loading-spinner"></div>
-  <div class="loading-text">Initializing environment...</div>
 </div>
+        </div>
+    </section>
 
-<!-- Typing Sound -->
-<audio id="typing-sound" preload="auto">
-  <source src="/assets/typing.wav" type="audio/wav" />
-</audio>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Lightbox Image" id="lightboxImage">
+        <button class="absolute top-4 right-4 text-white text-3xl" onclick="closeLightbox()">&times;</button>
+    </div>
 
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl heading-animate font-medium text-center mb-12 neon-yellow"><span class="heading-highlight">Get In Touch</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="card rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-4 neon-cyan">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-envelope text-purple-400"></i>
+                                <span>sarshijkarn333@gmail.com</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-phone text-cyan-400"></i>
+                                <span>+977 9863918187</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-map-marker-alt text-purple-400"></i>
+                                <span>Kathmandu, Nepal</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fas fa-globe text-cyan-400"></i>
+                                <a href="https://sarshijkarn.com.np" class="hover:text-purple-400 transition-colors">sarshijkarn.com.np</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="card rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-4 neon-cyan">Follow Me</h3>
+                        <div class="flex justify-center space-x-6">
+                            <a href="https://github.com/SarshijKarn" target="_blank" class="social-icon text-gray-400">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sarshij-karn-1a7766236/" target="_blank" class="social-icon text-gray-400">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://x.com/sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com/@sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Contact Form -->
+<div class="card rounded-xl p-6">
+  <form id="contactForm" novalidate>
+    <!-- Honeypot to catch bots -->
+    <input type="text" name="_gotcha" style="display: none" />
+    <!-- Hidden IP Address Field -->
+    <input type="hidden" name="ip" id="ipAddress" />
+
+    <div class="mb-4">
+      <label for="name" class="block text-sm font-medium mb-2">Name</label>
+      <input type="text" id="name" name="name" required
+        class="w-full px-4 py-3 bg-transparent border border-purple-400 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors">
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium mb-2">Email</label>
+      <input type="email" id="email" name="email" required
+        class="w-full px-4 py-3 bg-transparent border border-purple-400 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors">
+    </div>
+
+    <div class="mb-4">
+      <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+      <input type="text" id="subject" name="subject" required
+        class="w-full px-4 py-3 bg-transparent border border-purple-400 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors">
+    </div>
+
+    <div class="mb-6">
+      <label for="message" class="block text-sm font-medium mb-2">Message</label>
+      <textarea id="message" name="message" rows="5" required
+        class="w-full px-4 py-3 bg-transparent border border-purple-400 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors resize-none"></textarea>
+    </div>
+
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha mb-4" data-sitekey="6Ldxo1crAAAAAOqJ49P4bLMK4yAZ8muu7ecJfZXX"></div>
+
+    <button type="submit"
+      class="w-full bg-gradient-to-r from-purple-600 to-cyan-400 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-cyan-500 transition-all transform hover:scale-105">
+      Send Message
+    </button>
+  </form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Fetch IP Address -->
 <script>
-  const codeBox = document.getElementById('code-box');
-  const typingSound = document.getElementById('typing-sound');
-const lines = [
-  "[SYSTEM] Initializing theme engine ...\n",
-  "[ENGINE] Powering up modules...\n",
-  "[NETWORK] Establishing secure connection...\n",
-  "[BOOT] Launching Sarshij Karn environment →"
-];
-  let currentLine = 0;
-  let currentChar = 0;
-  function typeLine() {
-    if (currentLine < lines.length) {
-      const line = lines[currentLine];
-      const typed = line.slice(0, currentChar + 1);
-      if (currentChar === 0) {
-        codeBox.innerHTML += "<span class='line'></span>";
-      }
-      const linesEl = codeBox.querySelectorAll(".line");
-      linesEl[linesEl.length - 1].innerText = typed + "_";
-      // play typing sound
-      typingSound.currentTime = 0;
-      typingSound.play();
-
-      currentChar++;
-      if (currentChar < line.length) {
-        setTimeout(typeLine, 5);
-      } else {
-        currentChar = 0;
-        currentLine++;
-        setTimeout(typeLine, 10);
-      }
-    } else {
-      speakWelcome();
-      setTimeout(() => {
-        window.location.href = "realsite.html";
-      }, 50); // Delay to allow welcome voice
-    }
-  }
-  function speakWelcome() {
-    if ('speechSynthesis' in window) {
-      const utter = new SpeechSynthesisUtterance("Welcome to the system.");
-      utter.pitch = 1.2;
-      utter.rate = 0.85;
-      utter.voice = speechSynthesis.getVoices().find(v => v.name.includes("Google UK English Male"));
-      utter.volume = 1;
-      speechSynthesis.speak(utter);
-    }
-  }
-  // starting (browser autoplay policy)
-window.onload = () => {
-  setTimeout(typeLine, 300); // short delay to make it smooth
-};
+  fetch("https://ipapi.co/json/")
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("ipAddress").value = data.ip;
+    })
+    .catch((err) => {
+      console.error("IP fetch failed", err);
+    });
 </script>
+
+<!-- Google reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Contact Form Submit Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Bot check (honeypot)
+      if (form._gotcha.value) {
+        alert("Bot submission blocked.");
+        return;
+      }
+
+      // reCAPTCHA validation
+      const recaptchaToken = grecaptcha.getResponse();
+      if (!recaptchaToken) {
+        alert("Please complete the reCAPTCHA.");
+        return;
+      }
+
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        subject: form.subject.value.trim(),
+        message: form.message.value.trim(),
+        ip: form.ip.value,
+        userAgent: navigator.userAgent,
+        recaptcha: recaptchaToken,
+      };
+
+      try {
+        // Try sending to your backend first
+        const response = await fetch("https://contact-form-backend-l7n8.onrender.com/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          alert(result.message || "Message sent successfully!");
+          form.reset();
+          grecaptcha.reset();
+          return;
+        } else {
+          throw new Error("Backend failed");
+        }
+      } catch (error) {
+        console.warn("Backend unavailable, falling back to Formspree...");
+
+        // Fallback: send to Formspree
+        const formData = new FormData(form);
+        formData.append("recaptcha", recaptchaToken);
+        formData.append("ip", form.ip.value);
+
+        try {
+          const resp = await fetch("https://formspree.io/f/mnnpappe", {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          if (resp.ok) {
+            alert("Message sent successfully via Formspree!");
+            form.reset();
+            grecaptcha.reset();
+          } else {
+            alert("Both backend and Formspree failed. Please try again later.");
+          }
+        } catch (fsErr) {
+          console.error("Formspree error:", fsErr);
+          alert("Both backend and Formspree failed. Please try again later.");
+        }
+      }
+    });
+  });
+</script>
+
+<!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/SarshijKarn" target="_blank" class="social-icon text-gray-400">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sarshij-karn-1a7766236/" target="_blank" class="social-icon text-gray-400">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@sarshijkarn" target="_blank" class="social-icon text-gray-400">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:sarshijkarn333@gmail.com" class="social-icon text-gray-400">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <div class="text-gray-400">
+                <p>&copy; 2024 Sarshij Karn. All rights reserved.</p>
+                <p class="text-sm mt-2">Built with passion and futuristic vision in Nepal.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
 </body>
 </html>
