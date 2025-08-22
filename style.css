@@ -8,6 +8,7 @@
             --text-light: #333333;
             --card-dark: rgba(20, 20, 30, 0.8);
             --card-light: rgba(255, 255, 255, 0.9);
+            --navbar-height: 60px;
         }
 
         * {
@@ -25,6 +26,12 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            overscroll-behavior-x: none;
+            overscroll-behavior-y: none;
         }
 
 
@@ -94,6 +101,8 @@
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             z-index: 1000;
             backdrop-filter: blur(10px);
@@ -386,55 +395,6 @@
             }
         }
 
-        /* Gallery lightbox */
-    .gallery-img {
-    width: 100%;
-    height: 12rem;
-    object-fit: cover;
-    object-position: center center;
-    transition: transform 0.35s cubic-bezier(.77,.19,.35,1.36);
-    aspect-ratio: 4 / 3;
-    background: #191b26;
-}
-    #gallery-slider {
-    width: 100%;
-    overflow-x: hidden;
-    position: relative;
-}
-    #gallery-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-}
-    @media (max-width: 768px) {
-    .gallery-img {
-        height: 8rem;
-        aspect-ratio: 4 / 3;
-    }
-}
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
         /* Timeline styles */
         .timeline {
             position: relative;
@@ -616,3 +576,46 @@
             }
         }
 
+        /* Keep hamburger and theme toggle static on small screens */
+        @media (max-width: 768px) {
+            /* Pin the mobile menu button (hamburger) within safe areas */
+            #mobileMenuBtn {
+                position: fixed;
+                top: calc(env(safe-area-inset-top, 0px) + 12px);
+                right: calc(env(safe-area-inset-right, 0px) + 16px);
+                z-index: 1100; /* above navbar and content */
+            }
+            /* Pin the theme toggle to the left of the hamburger, stay within safe areas */
+            .theme-toggle {
+                position: fixed;
+                top: calc(env(safe-area-inset-top, 0px) + 10px);
+                right: calc(env(safe-area-inset-right, 0px) + 84px); /* leave space for the hamburger */
+                z-index: 1100;
+            }
+            /* Keep the navbar static in size and appearance and within viewport */
+
+            /* Prevent content from sliding under the fixed navbar */
+            body {
+                padding-top: calc(var(--navbar-height) + env(safe-area-inset-top, 0px));
+            }
+            /* Mobile dropdown as fixed overlay below navbar with scroll, clamped to viewport */
+            #mobileMenu {
+                position: fixed;
+                top: calc(var(--navbar-height) + env(safe-area-inset-top, 0px));
+                left: 0;
+                right: 0;
+                margin-top: 0 !important; /* override mt-4 utility */
+                padding-top: 8px;
+                z-index: 1050; /* below fixed icons, above content */
+                background: rgba(10, 10, 10, 0.95);
+                border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+                max-height: calc(100vh - env(safe-area-inset-top, 0px) - var(--navbar-height));
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+            }
+            .light #mobileMenu {
+                background: rgba(255, 255, 255, 0.95);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            }
+        }
+        
