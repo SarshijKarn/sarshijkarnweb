@@ -4,6 +4,9 @@ Welcome to the portfolio website of **Sarshij Karn** – an Electronics, Communi
 
 [🌐 **Live Demo**](https://sarshijkarn.com.np/)
 
+
+![Portfolio_Demo](assets/websitefront.gif)
+
 ---
 
 ## ✨ Features
